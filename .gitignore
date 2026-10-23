@@ -1,0 +1,14 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Собранная игра (exe весит больше 100 МБ — GitHub такие файлы не принимает,
+# её выкладывают отдельно, в раздел Releases)
+/build/
+
+# Резервные копии Blender
+*.blend1
+
+# Личные настройки Claude и MCP-серверов этого компьютера
+/.claude/
+/.mcp.json

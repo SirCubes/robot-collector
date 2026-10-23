@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://drfk0wmlx04k6"]
+
+[ext_resource type="Script" uid="uid://benu21lapbr0g" path="res://scenes/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://06c2j360foqd" path="res://models/robot.glb" id="2_g2els"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3e0k0"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1340858743 groups=["player"]]
+script = ExtResource("1_3vyb7")
+
+[node name="robot" parent="." unique_id=107679479 instance=ExtResource("2_g2els")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1660325494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_3e0k0")
+
+[node name="CameraArm" type="SpringArm3D" parent="." unique_id=1087764080]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 1, 0)
+spring_length = 10.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraArm" unique_id=251709826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)

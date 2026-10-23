@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/enemies/drone.gd" id="1_drone"]
+[ext_resource type="PackedScene" uid="uid://5ebvn22b0xrk" path="res://models/drone.glb" id="2_drone"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_drone"]
+radius = 0.6
+
+[node name="Drone" type="Area3D"]
+script = ExtResource("1_drone")
+
+[node name="drone" parent="." instance=ExtResource("2_drone")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_drone")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cn0ckst1gm8mi"]
+
+[ext_resource type="Script" uid="uid://d26ehldod8a45" path="res://scenes/enemy.gd" id="1_7p1mj"]
+[ext_resource type="PackedScene" uid="uid://b87qfq8npq52v" path="res://models/enemy.glb" id="2_md0e3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3e0k0"]
+
+[node name="Enemy" type="Area3D" unique_id=1559485411]
+script = ExtResource("1_7p1mj")
+
+[node name="enemy" parent="." unique_id=1031070127 instance=ExtResource("2_md0e3")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=525875987]
+shape = SubResource("SphereShape3D_3e0k0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

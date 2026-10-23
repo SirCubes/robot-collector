@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://fhbg7d15urih" path="res://models/props/lantern.glb" id="1_model"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_prop"]
+size = Vector3(0.25, 1.81, 0.25)
+
+[node name="LanternProp" type="StaticBody3D"]
+
+[node name="lantern" parent="." instance=ExtResource("1_model")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905, 0)
+shape = SubResource("BoxShape3D_prop")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+light_color = Color(1, 0.75, 0.4, 1)
+light_energy = 1.5
+omni_range = 6.0

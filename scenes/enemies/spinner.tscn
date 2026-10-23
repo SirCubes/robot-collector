@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/enemies/spinner.gd" id="1_spin"]
+[ext_resource type="PackedScene" uid="uid://b8odmee2a03dw" path="res://models/spinner.glb" id="2_spin"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_post"]
+height = 1.0
+radius = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_arm"]
+size = Vector3(6.6, 0.4, 0.4)
+
+[node name="Spinner" type="Node3D"]
+script = ExtResource("1_spin")
+
+[node name="Post" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Post"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_post")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="spinner" parent="Pivot" instance=ExtResource("2_spin")]
+
+[node name="ArmArea" type="Area3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/ArmArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77, 0)
+shape = SubResource("BoxShape3D_arm")
+
+[connection signal="body_entered" from="Pivot/ArmArea" to="." method="_on_arm_body_entered"]

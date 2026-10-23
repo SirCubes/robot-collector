@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/traps/spikes.gd" id="1_spikes"]
+[ext_resource type="PackedScene" uid="uid://caouwn4bu8e5" path="res://models/spikes.glb" id="2_spikes"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_spikes"]
+size = Vector3(1.8, 0.5, 1.8)
+
+[node name="Spikes" type="Area3D"]
+script = ExtResource("1_spikes")
+
+[node name="spikes" parent="." instance=ExtResource("2_spikes")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_spikes")

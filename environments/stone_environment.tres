@@ -1,0 +1,38 @@
+[gd_resource type="Environment" format=3 uid="uid://dtnuo4oxtt52a"]
+
+[ext_resource type="Shader" uid="uid://bp5fttaxvjo0" path="res://shaders/sky_stone.gdshader" id="1_sky"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stone"]
+shader = ExtResource("1_sky")
+shader_parameter/sky_top = Color(0.22, 0.25, 0.3, 1)
+shader_parameter/sky_horizon = Color(0.62, 0.6, 0.58, 1)
+shader_parameter/glow_color = Color(0.95, 0.55, 0.3, 1)
+shader_parameter/glow_strength = 0.8
+shader_parameter/cloud_dark = Color(0.25, 0.26, 0.3, 1)
+shader_parameter/cloud_light = Color(0.6, 0.6, 0.63, 1)
+shader_parameter/cloud_cover = 0.7
+shader_parameter/rock_far = Color(0.42, 0.42, 0.46, 1)
+shader_parameter/rock_near = Color(0.23, 0.23, 0.27, 1)
+shader_parameter/mountain_height = 0.2
+shader_parameter/mist_color = Color(0.55, 0.55, 0.58, 1)
+shader_parameter/abyss_color = Color(0.26, 0.27, 0.31, 1)
+
+[sub_resource type="Sky" id="Sky_stone"]
+sky_material = SubResource("ShaderMaterial_stone")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_stone")
+ambient_light_source = 3
+ambient_light_color = Color(0.75, 0.76, 0.8, 1)
+ambient_light_sky_contribution = 0.6
+ambient_light_energy = 0.6
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.56, 0.57, 0.61, 1)
+fog_density = 0.005
+fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_contrast = 1.05
+adjustment_saturation = 0.85

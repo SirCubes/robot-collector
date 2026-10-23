@@ -1,0 +1,248 @@
+[gd_scene format=3 uid="uid://bot3614cqjyf4"]
+
+[ext_resource type="Script" uid="uid://c4wds0bje7kfr" path="res://scenes/main.gd" id="1_8g4ke"]
+[ext_resource type="PackedScene" uid="uid://djw7k876gll28" path="res://scenes/exit.tscn" id="2_56gwk"]
+[ext_resource type="PackedScene" uid="uid://drfk0wmlx04k6" path="res://scenes/player.tscn" id="4_cleqw"]
+[ext_resource type="PackedScene" uid="uid://bsl44krq1n22u" path="res://scenes/moving_platform.tscn" id="11_63e4f"]
+[ext_resource type="MeshLibrary" uid="uid://ddnvdj3wojxhu" path="res://kit/kit_library.tres" id="12_y6lc1"]
+[ext_resource type="Environment" uid="uid://dtnuo4oxtt52a" path="res://environments/stone_environment.tres" id="ENV_stone"]
+[ext_resource type="PackedScene" uid="uid://dbvae4ubf228g" path="res://scenes/battery.tscn" id="L2_battery"]
+[ext_resource type="PackedScene" path="res://scenes/props/crate_prop.tscn" id="L2_crate"]
+[ext_resource type="PackedScene" path="res://scenes/traps/crumble_platform.tscn" id="L2_crumble"]
+[ext_resource type="PackedScene" path="res://scenes/props/crystals_prop.tscn" id="L2_crystals"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/drone.tscn" id="L2_drone"]
+[ext_resource type="PackedScene" path="res://scenes/traps/jump_pad.tscn" id="L2_jump_pad"]
+[ext_resource type="PackedScene" path="res://scenes/props/lantern_prop.tscn" id="L2_lantern"]
+[ext_resource type="PackedScene" path="res://scenes/traps/spikes.tscn" id="L2_spikes"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/spinner.tscn" id="L2_spinner"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/turret.tscn" id="L2_turret"]
+[ext_resource type="PackedScene" path="res://scenes/props/stone_wall_prop.tscn" id="L2_wall"]
+[ext_resource type="AudioStream" uid="uid://cdydg2tly8pew" path="res://audio/music/tower.wav" id="MUS_tower"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e0k0"]
+bg_color = Color(0.41960785, 0.8784314, 0.3019608, 1)
+
+[node name="Level_2" type="Node3D" unique_id=84698887]
+script = ExtResource("1_8g4ke")
+hit_damage = 30.0
+music = ExtResource("MUS_tower")
+
+[node name="Exit" parent="." unique_id=407807935 instance=ExtResource("2_56gwk")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 45, 7)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=309019819]
+environment = ExtResource("ENV_stone")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=591307296]
+transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.70710677, -0.5, -0.6123724, 0.6123724, 0, 0, 0)
+light_color = Color(1, 0.95, 0.88, 1)
+light_energy = 1.05
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1340858743 instance=ExtResource("4_cleqw")]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=558753272]
+
+[node name="BatteryLabel" type="Label" parent="HUD" unique_id=1699374174]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 277.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 32
+text = "Батарейки: 0 / 5"
+
+[node name="EnergyBar" type="ProgressBar" parent="HUD" unique_id=491945995]
+offset_left = 20.0
+offset_top = 70.0
+offset_right = 320.0
+offset_bottom = 100.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_3e0k0")
+max_value = 30.0
+value = 30.0
+show_percentage = false
+
+[node name="MessageLabel" type="Label" parent="HUD" unique_id=992681922]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Победа!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridMap" type="GridMap" parent="." unique_id=465213072]
+mesh_library = ExtResource("12_y6lc1")
+cell_size = Vector3(2, 1, 2)
+data = {
+"cells": PackedInt32Array(-1, 0, 655369, -65536, 0, 655369, -65536, 65535, 655369, -1, 65535, 655369, -1, 1, 655369, -65536, 1, 655369, -1, 4, 655369, -1, 5, 655369, -1, 6, 655369, -1, 7, 655369, -1, 3, 655369, -1, 2, 655369, 65535, 2, 655375, 131071, 3, 655375, 196607, 4, 655375, 262143, 5, 655375, 327679, 6, 655375, 65535, 3, 655369, 65535, 4, 655369, 65535, 5, 655369, 65535, 6, 655369, 65535, 7, 655369, 131071, 4, 655369, 131071, 5, 655369, 131071, 6, 655369, 131071, 7, 655369, 196607, 5, 655369, 196607, 6, 655369, 196607, 7, 655369, 262143, 6, 655369, 262143, 7, 655369, 327679, 7, 655369, -2, 65535, 655369, -2, 0, 655369, -2, 1, 655369, 327679, 8, 655369, 327679, 9, 655360, 393215, 9, 1048579, 393215, 8, 1441795, 393215, 7, 1441795, 327679, 21, 1048589, 327679, 22, 1048592, 327678, 22, 1048592, 262144, 22, 1048592, 262144, 23, 1048592, 327679, 23, 1048592, 327678, 23, 1048592, 327678, 24, 1048592, 327679, 24, 1048592, 262144, 24, 1048592, 262144, 25, 1048592, 327679, 25, 1048592, 327678, 25, 1048592, 327677, 22, 1048592, 327676, 22, 1048592, 327675, 22, 1048592, 327674, 22, 1048592, 327674, 23, 1048592, 327675, 23, 1048592, 327676, 23, 1048592, 327677, 23, 1048592, 327677, 24, 1048592, 327676, 24, 1048592, 327675, 24, 1048592, 327674, 24, 1048592, 327677, 25, 1048592, 327676, 25, 1048592, 327675, 25, 1048592, 327674, 25, 1048592, 262145, 22, 1048592, 262145, 23, 1048592, 262145, 24, 1048592, 262145, 25, 1048592, 262146, 24, 1048592, 262146, 23, 1048592, 262146, 22, 1048592, 262147, 22, 1048592, 262147, 23, 1048592, 262147, 24, 1048592, 262146, 25, 1048592, 262147, 25, 1048592, 262148, 25, 1048592, 262148, 24, 1048592, 262148, 23, 1048592, 262148, 22, 1048592, 393214, 22, 17, 393213, 22, 17, 393212, 22, 17, 393211, 22, 17, 393210, 22, 17, 327680, 22, 17, 327681, 22, 17, 327682, 22, 17, 327683, 22, 17, 327684, 22, 17, 327680, 23, 1048593, 327680, 24, 1048593, 393214, 23, 1441809, 393214, 24, 1441809, 262138, 25, 1179650, 262139, 25, 1179650, 262140, 25, 1179650, 262141, 25, 1179650, 262142, 25, 1179650, 262143, 25, 1179650, 196608, 25, 1179650, 196609, 25, 1179650, 196610, 25, 1179650, 196611, 25, 1179650, 196612, 25, 1179650, 196612, 24, 1179650, 196612, 23, 1179650, 196612, 22, 1179650, 196611, 24, 1179650, 196610, 24, 1179650, 196611, 23, 1179650, 196610, 23, 1179650, 196611, 22, 1179650, 196610, 22, 1179650, 196609, 23, 1179650, 196609, 24, 1179650, 196608, 23, 1179650, 262143, 23, 1179650, 262143, 22, 1179650, 262142, 22, 1179650, 196609, 22, 1179650, 196608, 22, 1179650, 262143, 24, 1179650, 196608, 24, 1179650, 262142, 24, 1179650, 262141, 24, 1179650, 262142, 23, 1179650, 262141, 23, 1179650, 262141, 22, 1179650, 262140, 22, 1179650, 262140, 23, 1179650, 262139, 23, 1179650, 262139, 24, 1179650, 262140, 24, 1179650, 262139, 22, 1179650, 262138, 22, 1179650, 262138, 23, 1179650, 262138, 24, 1179650, 196602, 25, 655371, 196602, 24, 655371, 196602, 23, 655371, 196602, 22, 655371, 196603, 22, 655371, 196603, 23, 655371, 196603, 24, 655371, 196604, 24, 655371, 196604, 23, 655371, 196604, 22, 655371, 196605, 23, 655371, 196605, 24, 655371, 196606, 23, 655371, 196606, 22, 655371, 196605, 22, 655371, 196607, 22, 655371, 131072, 22, 655371, 131073, 22, 655371, 131074, 22, 655371, 131075, 22, 655371, 131075, 23, 655371, 131075, 24, 655371, 131075, 25, 655371, 131074, 25, 655371, 131074, 24, 655371, 131073, 24, 655371, 131073, 23, 655371, 131074, 23, 655371, 131076, 25, 655371, 131076, 24, 655371, 131076, 23, 655371, 131076, 22, 655371, 131073, 25, 655371, 131072, 25, 655371, 131072, 24, 655371, 196607, 24, 655371, 131072, 23, 655371, 196607, 23, 655371, 196607, 25, 655371, 196606, 25, 655371, 196605, 25, 655371, 196604, 25, 655371, 196603, 25, 655371, 196606, 24, 655371, -65538, 65535, 1179650, -65538, 0, 1179650, -65538, 1, 1179650, -65537, 2, 1179650, -65537, 3, 1179650, -65537, 4, 1179650, -65537, 6, 1179650, -65537, 7, 1179650, -65537, 5, 1179650, -65537, 1, 1179650, -65537, 0, 1179650, -65537, 65535, 1179650, -131072, 65535, 1179650, -131072, 0, 1179650, -131072, 1, 1179650, -131074, 1, 1048587, -131074, 0, 1048587, -131074, 65535, 1048587, -131073, 1, 1048587, -196608, 1, 1048587, -196608, 0, 1048587, -131073, 0, 1048587, -131073, 65535, 1048587, -196608, 65535, 1048587, -131073, 2, 1048587, -131073, 3, 1048587, -131073, 4, 1048587, -131073, 5, 1048587, -131073, 6, 1048587, -131073, 7, 1048587, 262143, 8, 1048578, 196607, 8, 1048587, 393210, 25, 655377, 393211, 25, 655377, 393212, 25, 655377, 393213, 25, 655377, 393214, 25, 655377, 393215, 25, 655377, 327680, 25, 655377, 327681, 25, 655377, 327682, 25, 655377, 327683, 25, 655377, 327684, 25, 655377, 1638403, 9, 15, 1703939, 8, 15, 1638403, 8, 9, 1769475, 7, 15, 1638403, 7, 9, 1703939, 7, 9, 1835011, 6, 15, 1638403, 6, 9, 1703939, 6, 9, 1769475, 6, 9, 1900547, 5, 15, 1638403, 5, 9, 1703939, 5, 9, 1769475, 5, 9, 1835011, 5, 9, 1900544, 2, 16, 1835008, 2, 11, 1900544, 3, 16, 1835008, 3, 11, 1900544, 4, 16, 1835008, 4, 11, 1900545, 2, 16, 1835009, 2, 11, 1900545, 3, 16, 1835009, 3, 11, 1900545, 4, 16, 1835009, 4, 11, 1900546, 2, 16, 1835010, 2, 11, 1900546, 3, 16, 1835010, 3, 11, 1900546, 4, 16, 1835010, 4, 11, 1900547, 2, 16, 1835011, 2, 11, 1900547, 3, 16, 1835011, 3, 11, 1900547, 4, 16, 1835011, 4, 11, 917507, 26, 16, 851971, 26, 11, 917507, 27, 16, 851971, 27, 11, 917508, 26, 16, 851972, 26, 11, 917508, 27, 16, 851972, 27, 11, 917509, 26, 16, 851973, 26, 11, 917509, 27, 16, 851973, 27, 11, 983038, 19, 16, 917502, 19, 11, 983038, 20, 16, 917502, 20, 11, 983039, 19, 16, 917503, 19, 11, 983039, 20, 16, 917503, 20, 11, 917504, 19, 16, 851968, 19, 11, 917504, 20, 16, 851968, 20, 11, 917505, 19, 16, 851969, 19, 11, 917505, 20, 16, 851969, 20, 11, 917506, 19, 16, 851970, 19, 11, 917506, 20, 16, 851970, 20, 11, 917507, 19, 16, 851971, 19, 11, 917507, 20, 16, 851971, 20, 11, 917507, 16, 1048576, 917507, 17, 1048576, 917507, 18, 1048576, 917506, 8, 16, 851970, 8, 11, 917506, 9, 16, 851970, 9, 11, 917506, 10, 16, 851970, 10, 11, 917506, 11, 16, 851970, 11, 11, 917506, 12, 16, 851970, 12, 11, 917506, 13, 16, 851970, 13, 11, 917506, 14, 16, 851970, 14, 11, 917506, 15, 16, 851970, 15, 11, 917507, 8, 16, 851971, 8, 11, 917507, 9, 16, 851971, 9, 11, 917507, 10, 16, 851971, 10, 11, 917507, 11, 16, 851971, 11, 11, 917507, 12, 16, 851971, 12, 11, 917507, 13, 16, 851971, 13, 11, 917507, 14, 16, 851971, 14, 11, 917507, 15, 16, 851971, 15, 11, 917508, 8, 16, 851972, 8, 11, 917508, 9, 16, 851972, 9, 11, 917508, 10, 16, 851972, 10, 11, 917508, 11, 16, 851972, 11, 11, 917508, 12, 16, 851972, 12, 11, 917508, 13, 16, 851972, 13, 11, 917508, 14, 16, 851972, 14, 11, 917508, 15, 16, 851972, 15, 11, 917509, 8, 16, 851973, 8, 11, 917509, 9, 16, 851973, 9, 11, 917509, 10, 16, 851973, 10, 11, 917509, 11, 16, 851973, 11, 11, 917509, 12, 16, 851973, 12, 11, 917509, 13, 16, 851973, 13, 11, 917509, 14, 16, 851973, 14, 11, 917509, 15, 16, 851973, 15, 11, 917510, 8, 16, 851974, 8, 11, 917510, 9, 16, 851974, 9, 11, 917510, 10, 16, 851974, 10, 11, 917510, 11, 16, 851974, 11, 11, 917510, 12, 16, 851974, 12, 11, 917510, 13, 16, 851974, 13, 11, 917510, 14, 16, 851974, 14, 11, 917510, 15, 16, 851974, 15, 11, 1572866, 9, 16, 1507330, 9, 11, 1572866, 10, 16, 1507330, 10, 11, 1572866, 11, 16, 1507330, 11, 11, 1572866, 12, 16, 1507330, 12, 11, 1572866, 13, 16, 1507330, 13, 11, 1572867, 9, 16, 1507331, 9, 11, 1572867, 10, 16, 1507331, 10, 11, 1572867, 11, 16, 1507331, 11, 11, 1572867, 12, 16, 1507331, 12, 11, 1572867, 13, 16, 1507331, 13, 11, 1572868, 9, 16, 1507332, 9, 11, 1572868, 10, 16, 1507332, 10, 11, 1572868, 11, 16, 1507332, 11, 11, 1572868, 12, 16, 1507332, 12, 11, 1572868, 13, 16, 1507332, 13, 11, 1572869, 9, 16, 1507333, 9, 11, 1572869, 10, 16, 1507333, 10, 11, 1572869, 11, 16, 1507333, 11, 11, 1572869, 12, 16, 1507333, 12, 11, 1572869, 13, 16, 1507333, 13, 11, 1572870, 9, 16, 1507334, 9, 11, 1572870, 10, 16, 1507334, 10, 11, 1572870, 11, 16, 1507334, 11, 11, 1572870, 12, 16, 1507334, 12, 11, 1572870, 13, 16, 1507334, 13, 11, 2949118, 2, 16, 2883582, 2, 11, 2949118, 3, 16, 2883582, 3, 11, 2949118, 4, 16, 2883582, 4, 11, 2949119, 2, 16, 2883583, 2, 11, 2949119, 3, 16, 2883583, 3, 11, 2949119, 4, 16, 2883583, 4, 11, 2883584, 2, 16, 2818048, 2, 11, 2883584, 3, 16, 2818048, 3, 11, 2883584, 4, 16, 2818048, 4, 11, 2883585, 2, 16, 2818049, 2, 11, 2883585, 3, 16, 2818049, 3, 11, 2883585, 4, 16, 2818049, 4, 11)
+}
+metadata/_editor_floor_ = Vector3(0, 25, 0)
+
+[node name="MovingPlatform" parent="." unique_id=630856672 instance=ExtResource("11_63e4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4.75, 21.55)
+move_offset = Vector3(0, 0, 19)
+travel_time = 3.0
+
+[node name="Battery1" parent="." unique_id=1473158606 instance=ExtResource("L2_battery")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6, 43)
+
+[node name="Battery2" parent="." unique_id=339081663 instance=ExtResource("L2_battery")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2, 6, 45.1)
+
+[node name="Battery3" parent="." unique_id=153710184 instance=ExtResource("L2_battery")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2, 6, 51)
+
+[node name="Battery4" parent="." unique_id=1692467581 instance=ExtResource("L2_battery")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 16, 47)
+
+[node name="Battery5" parent="." unique_id=690620971 instance=ExtResource("L2_battery")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 16, 35)
+
+[node name="Battery6" parent="." unique_id=625901256 instance=ExtResource("L2_battery")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 16, 17.5)
+
+[node name="Battery7" parent="." unique_id=579341423 instance=ExtResource("L2_battery")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 26, 19)
+
+[node name="Battery8" parent="." unique_id=399655412 instance=ExtResource("L2_battery")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 31, 6)
+
+[node name="TurretYard" parent="." unique_id=1681559892 instance=ExtResource("L2_turret")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 45.4)
+fire_range = 9.0
+fire_interval = 1.5
+turn_speed = 6.0
+projectile_speed = 10.0
+
+[node name="SpinnerYard" parent="." unique_id=1690571865 instance=ExtResource("L2_spinner")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 5, 48)
+turn_speed = 80.0
+
+[node name="JumpPadYard" parent="." unique_id=1271165722 instance=ExtResource("L2_jump_pad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.6, 5, 50.8)
+launch_speed = 15.0
+
+[node name="DroneBridge" parent="." unique_id=168252793 instance=ExtResource("L2_drone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 17, 35.5)
+detect_radius = 7.0
+leash_radius = 5.0
+
+[node name="LiftUp" parent="." unique_id=599635468 instance=ExtResource("11_63e4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 14.75, 19)
+move_offset = Vector3(0, 10, 0)
+travel_time = 2.5
+
+[node name="TurretTop" parent="." unique_id=1185242216 instance=ExtResource("L2_turret")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 25, 26.5)
+fire_range = 11.0
+fire_interval = 1.6
+turn_speed = 6.0
+projectile_speed = 9.5
+
+[node name="DroneTop" parent="." unique_id=156985561 instance=ExtResource("L2_drone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 31.5, 8.5)
+detect_radius = 7.0
+lose_radius = 10.0
+leash_radius = 6.0
+
+[node name="Lantern1" parent="." unique_id=527000596 instance=ExtResource("L2_lantern")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4, 15, 55.4)
+
+[node name="Lantern2" parent="." unique_id=1637640408 instance=ExtResource("L2_lantern")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4, 15, 31.4)
+
+[node name="Lantern3" parent="." unique_id=1495616196 instance=ExtResource("L2_lantern")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4, 30, 4.6)
+
+[node name="Crystals1" parent="." unique_id=1606083910 instance=ExtResource("L2_crystals")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 45, 4.6)
+
+[node name="Crystals2" parent="." unique_id=1270252923 instance=ExtResource("L2_crystals")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 45, 9.4)
+
+[node name="Crystals3" parent="." unique_id=1000911954 instance=ExtResource("L2_crystals")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 45, 4.6)
+
+[node name="Crystals4" parent="." unique_id=573392624 instance=ExtResource("L2_crystals")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 13.4, 25, 20.1)
+
+[node name="CrateCenter" parent="." unique_id=355808012 instance=ExtResource("L2_crate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 5, 48.5)
+
+[node name="Crumble1" parent="." unique_id=786087736 instance=ExtResource("L2_crumble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 14.75, 54)
+
+[node name="Crumble2" parent="." unique_id=1179144365 instance=ExtResource("L2_crumble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 14.75, 54)
+
+[node name="Crumble3" parent="." unique_id=1199130909 instance=ExtResource("L2_crumble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 14.75, 54)
+
+[node name="Crumble4" parent="." unique_id=1489847499 instance=ExtResource("L2_crumble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 14.75, 50.5)
+
+[node name="Crumble5" parent="." unique_id=1946837192 instance=ExtResource("L2_crumble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 14.75, 47)
+
+[node name="Crumble6" parent="." unique_id=320410946 instance=ExtResource("L2_crumble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 14.75, 43.5)
+
+[node name="SpikeWall_5_27" parent="." unique_id=1998632805 instance=ExtResource("L2_spikes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 15, 27)
+
+[node name="SpikeWall_9_27" parent="." unique_id=579499921 instance=ExtResource("L2_spikes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 15, 27)
+
+[node name="SpikeWall_11_27" parent="." unique_id=1390703502 instance=ExtResource("L2_spikes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 15, 27)
+
+[node name="SpikeWall_13_27" parent="." unique_id=1434626946 instance=ExtResource("L2_spikes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 15, 27)
+
+[node name="SpikeWall_5_25" parent="." unique_id=1295201396 instance=ExtResource("L2_spikes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 15, 25)
+
+[node name="SpikeTimed1" parent="." unique_id=1003263729 instance=ExtResource("L2_spikes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 15, 25)
+interval = 1.2
+
+[node name="SpikeWall_13_25" parent="." unique_id=1782281530 instance=ExtResource("L2_spikes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 15, 25)
+
+[node name="SpikeWall_5_23" parent="." unique_id=1329582151 instance=ExtResource("L2_spikes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 15, 23)
+
+[node name="SpikeWall_7_23" parent="." unique_id=1276416139 instance=ExtResource("L2_spikes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 15, 23)
+
+[node name="SpikeWall_9_23" parent="." unique_id=1909043942 instance=ExtResource("L2_spikes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 15, 23)
+
+[node name="SpikeWall_13_23" parent="." unique_id=1668820540 instance=ExtResource("L2_spikes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 15, 23)
+
+[node name="SpikeWall_5_21" parent="." unique_id=1767676916 instance=ExtResource("L2_spikes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 15, 21)
+
+[node name="SpikeTimed2" parent="." unique_id=1749515103 instance=ExtResource("L2_spikes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 15, 21)
+interval = 1.2
+time_offset = 0.6
+
+[node name="WallCover1" parent="." unique_id=1760161149 instance=ExtResource("L2_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 25, 21)
+
+[node name="WallCover2" parent="." unique_id=1486943585 instance=ExtResource("L2_wall")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 25, 24.5)
+
+[node name="LiftSummit" parent="." unique_id=1359543923 instance=ExtResource("11_63e4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 29.75, 11.5)
+move_offset = Vector3(0, 15, 0)
+travel_time = 3.5
+
+[connection signal="player_entered" from="Exit" to="." method="_on_exit_player_entered"]
+[connection signal="battery_collected" from="Player" to="." method="_on_player_battery_collected"]
+[connection signal="fell" from="Player" to="." method="_on_player_fell"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]

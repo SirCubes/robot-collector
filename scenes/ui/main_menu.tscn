@@ -1,0 +1,83 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_script"]
+[ext_resource type="AudioStream" path="res://audio/music/island.wav" id="2_music"]
+[ext_resource type="Environment" path="res://environments/island_environment.tres" id="3_env"]
+[ext_resource type="PackedScene" path="res://scenes/ui/menu.tscn" id="4_menu"]
+[ext_resource type="PackedScene" path="res://models/island.glb" id="5_island"]
+[ext_resource type="PackedScene" path="res://models/robot.glb" id="6_robot"]
+[ext_resource type="PackedScene" path="res://models/battery.glb" id="7_battery"]
+[ext_resource type="PackedScene" path="res://models/exit.glb" id="8_exit"]
+[ext_resource type="PackedScene" path="res://models/platform.glb" id="9_platform"]
+[ext_resource type="PackedScene" path="res://scenes/tree_prop.tscn" id="10_tree"]
+[ext_resource type="PackedScene" path="res://scenes/rock_prop.tscn" id="11_rock"]
+[ext_resource type="PackedScene" path="res://models/bush.glb" id="12_bush"]
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_script")
+music = ExtResource("2_music")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_env")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.70710677, -0.5, -0.6123724, 0.6123724, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Island" parent="." instance=ExtResource("5_island")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Robot" parent="." instance=ExtResource("6_robot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0)
+
+[node name="Exit" parent="." instance=ExtResource("8_exit")]
+transform = Transform3D(0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, 0.819152, -2.6, 0, -2.2)
+
+[node name="Tree1" parent="." instance=ExtResource("10_tree")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 2.9, 0, -2.6)
+
+[node name="Tree2" parent="." instance=ExtResource("10_tree")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -3.4, 0, 2.2)
+
+[node name="Rock" parent="." instance=ExtResource("11_rock")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0, 2.4)
+
+[node name="Bush1" parent="." instance=ExtResource("12_bush")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3.4)
+
+[node name="Bush2" parent="." instance=ExtResource("12_bush")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.6, 0, -3.6)
+
+[node name="Platform1" parent="." instance=ExtResource("9_platform")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 7, 2, -6)
+
+[node name="Platform2" parent="." instance=ExtResource("9_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3.4, 4)
+
+[node name="Platform3" parent="." instance=ExtResource("9_platform")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 4, -2.5, 8)
+
+[node name="Batteries" type="Node3D" parent="."]
+
+[node name="Battery1" parent="Batteries" instance=ExtResource("7_battery")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 1.3, 1)
+
+[node name="Battery2" parent="Batteries" instance=ExtResource("7_battery")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.6, -0.4)
+
+[node name="Battery3" parent="Batteries" instance=ExtResource("7_battery")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3.3, -6)
+
+[node name="Battery4" parent="Batteries" instance=ExtResource("7_battery")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4.6, 4)
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0, 2, 8.5)
+h_offset = -3.2
+current = true
+fov = 55.0
+
+[node name="Menu" parent="." instance=ExtResource("4_menu")]

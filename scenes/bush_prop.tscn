@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c7ac4g27n2bib"]
+
+[ext_resource type="Script" uid="uid://c4cmh01d7nn1s" path="res://scenes/bush_prop.gd" id="1_lokds"]
+[ext_resource type="PackedScene" uid="uid://cggfyup30x13s" path="res://models/bush.glb" id="1_vo53f"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3e0k0"]
+height = 1.0
+radius = 0.6
+
+[node name="BushProp" type="Area3D" unique_id=2078746732]
+script = ExtResource("1_lokds")
+
+[node name="bush" parent="." unique_id=891266176 instance=ExtResource("1_vo53f")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=7754867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_3e0k0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

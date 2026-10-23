@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://bb5sx1dgumck5" path="res://models/props/crystals.glb" id="1_model"]
+
+[node name="CrystalsProp" type="Node3D"]
+
+[node name="crystals" parent="." instance=ExtResource("1_model")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+light_color = Color(0.3, 0.85, 1, 1)
+omni_range = 4.0

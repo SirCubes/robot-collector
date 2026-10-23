@@ -1,0 +1,187 @@
+[gd_scene format=3 uid="uid://dkukydfn40851"]
+
+[ext_resource type="Script" uid="uid://c4wds0bje7kfr" path="res://scenes/main.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://drfk0wmlx04k6" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://cnmekbdeu87cq" path="res://scenes/platform.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://djw7k876gll28" path="res://scenes/exit.tscn" id="2_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://lwilvelvk636" path="res://models/island.glb" id="2_tefeu"]
+[ext_resource type="PackedScene" uid="uid://dbvae4ubf228g" path="res://scenes/battery.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://cn0ckst1gm8mi" path="res://scenes/enemy.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://c2vdlmxap8g5e" path="res://scenes/rock_prop.tscn" id="7_85g3d"]
+[ext_resource type="PackedScene" uid="uid://chb4odl1srfpy" path="res://scenes/tree_prop.tscn" id="8_choun"]
+[ext_resource type="PackedScene" uid="uid://c7ac4g27n2bib" path="res://scenes/bush_prop.tscn" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://bsl44krq1n22u" path="res://scenes/moving_platform.tscn" id="10_choun"]
+[ext_resource type="MeshLibrary" uid="uid://ddnvdj3wojxhu" path="res://kit/kit_library.tres" id="11_ya4ey"]
+
+[ext_resource type="AudioStream" path="res://audio/music/island.wav" id="MUS_island"]
+[ext_resource type="Environment" path="res://environments/island_environment.tres" id="ENV_island"]
+
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3e0k0"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e0k0"]
+bg_color = Color(0.41960785, 0.8784314, 0.3019608, 1)
+
+[node name="Main" type="Node3D" unique_id=84698887]
+script = ExtResource("1_jyhfs")
+music = ExtResource("MUS_island")
+next_level = "uid://bot3614cqjyf4"
+
+[node name="Exit" parent="." unique_id=407807935 instance=ExtResource("2_eb6dy")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 7)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=309019819]
+environment = ExtResource("ENV_island")
+
+[node name="island" parent="." unique_id=1676194656 instance=ExtResource("2_tefeu")]
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=705294411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=2140912878]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=224956915]
+shape = SubResource("BoxShape3D_3e0k0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=591307296]
+transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.70710677, -0.5, -0.6123724, 0.6123724, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1340858743 instance=ExtResource("1_o5qli")]
+
+[node name="Platform" parent="." unique_id=1642762487 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, -5)
+
+[node name="Platform2" parent="." unique_id=1355979144 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.951816, 3.560978, -8.6460285)
+
+[node name="Platform3" parent="." unique_id=1106521170 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5, -12)
+
+[node name="Platform4" parent="." unique_id=1124439797 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6958942, 7.6427593, -10.671991)
+
+[node name="Platform5" parent="." unique_id=1647094706 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5, -28)
+
+[node name="Battery" parent="." unique_id=1676372462 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 3)
+
+[node name="Battery2" parent="." unique_id=1189369752 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 5)
+
+[node name="Battery3" parent="." unique_id=1586749342 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, -5)
+
+[node name="Battery4" parent="." unique_id=298354866 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.952, 4.561, -8.646)
+
+[node name="Battery5" parent="." unique_id=698861079 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.707, 8.643, -10.687)
+
+[node name="Battery6" parent="." unique_id=1460804025 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 6, -28)
+
+[node name="Battery7" parent="." unique_id=1994522801 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 3, -1)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=558753272]
+
+[node name="BatteryLabel" type="Label" parent="HUD" unique_id=1699374174]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 277.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 32
+text = "Батарейки: 0 / 5"
+
+[node name="EnergyBar" type="ProgressBar" parent="HUD" unique_id=491945995]
+offset_left = 20.0
+offset_top = 70.0
+offset_right = 320.0
+offset_bottom = 100.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_3e0k0")
+max_value = 30.0
+value = 30.0
+show_percentage = false
+
+[node name="MessageLabel" type="Label" parent="HUD" unique_id=992681922]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Победа!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enemy" parent="." unique_id=1559485411 instance=ExtResource("5_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -2)
+move_offset = Vector3(10, 0, 0)
+speed = 1.2
+
+[node name="Enemy2" parent="." unique_id=1326358359 instance=ExtResource("5_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7286267, 0.5, -6)
+move_offset = Vector3(0, 0, 10)
+speed = 1.2
+
+[node name="rock" parent="." unique_id=1931106131 instance=ExtResource("7_85g3d")]
+transform = Transform3D(-0.861137, 0, -1.35092, 0, 1.60204, 0, 1.35092, 0, -0.861137, -4.69112, -0.0666581, 7.40261)
+
+[node name="rock3" parent="." unique_id=1139840287 instance=ExtResource("7_85g3d")]
+transform = Transform3D(0.653173, 0, -0.357149, 0, 0.74444, 0, 0.357149, 0, 0.653173, 5.54022, -0.0666581, -7.54137)
+
+[node name="rock2" parent="." unique_id=366882799 instance=ExtResource("7_85g3d")]
+transform = Transform3D(2.28018, 0, 0.789297, 0, 2.41292, 0, -0.789297, 0, 2.28018, -4.44856, -0.0944487, -7.4902)
+
+[node name="tree" parent="." unique_id=1113913181 instance=ExtResource("8_choun")]
+transform = Transform3D(1.7106, 0, 0, 0, 1.7106, 0, 0, 0, 1.7106, -7.79462, 0, 3.49079)
+
+[node name="tree2" parent="." unique_id=811820825 instance=ExtResource("8_choun")]
+transform = Transform3D(0.78388, 0, -1.52042, 0, 1.7106, 0, 1.52042, 0, 0.78388, -6.77148, 0, -4.19655)
+
+[node name="tree3" parent="." unique_id=132895945 instance=ExtResource("8_choun")]
+transform = Transform3D(1.66256, 0, 0.402542, 0, 1.7106, 0, -0.402542, 0, 1.66256, 8.00798, 0, -8.20169)
+
+[node name="bush" parent="." unique_id=891266176 instance=ExtResource("9_ya4ey")]
+transform = Transform3D(-1.36309, 0, 1.6477, 0, 2.13844, 0, -1.6477, 0, -1.36309, -7.37962, -0.10331, 6.39578)
+
+[node name="bush6" parent="." unique_id=2078746732 instance=ExtResource("9_ya4ey")]
+transform = Transform3D(2.22477, 0, 2.01256, 0, 3, 0, -2.01256, 0, 2.22477, 6.1685, -0.419839, 3.35984)
+
+[node name="bush2" parent="." unique_id=639082104 instance=ExtResource("9_ya4ey")]
+transform = Transform3D(1.46886, 0, 1.11706, 0, 1.84536, 0, -1.11706, 0, 1.46886, -7.99973, -0.10331, -2.14666)
+
+[node name="bush3" parent="." unique_id=876176985 instance=ExtResource("9_ya4ey")]
+transform = Transform3D(-0.809659, 0, 1.65216, 0, 1.83989, 0, -1.65216, 0, -0.809659, 6.80164, -0.10331, -3.1468)
+
+[node name="bush4" parent="." unique_id=742277036 instance=ExtResource("9_ya4ey")]
+transform = Transform3D(0.0341486, 0, 1.99582, 0, 1.99611, 0, -1.99582, 0, 0.0341485, 6.80164, -0.10331, -5.47304)
+
+[node name="bush5" parent="." unique_id=808226019 instance=ExtResource("9_ya4ey")]
+transform = Transform3D(1.43692, 0, -1.01393, 0, 1.75864, 0, 1.01393, 0, 1.43692, 4.28006, -0.10331, -8.23778)
+
+[node name="MovingPlatform" parent="." unique_id=630856672 instance=ExtResource("10_choun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5, -15.2)
+move_offset = Vector3(0, 0, -9.8)
+
+[node name="ShuttleLift" parent="." unique_id=1938475612 instance=ExtResource("10_choun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 1.75, -3.5)
+move_offset = Vector3(-27.5, -2, 0)
+travel_time = 3.5
+call_radius = 0.0
+
+[node name="GridMap" type="GridMap" parent="." unique_id=218983733]
+mesh_library = ExtResource("11_ya4ey")
+cell_size = Vector3(2, 1, 2)
+data = {
+"cells": PackedInt32Array(-65531, 1, 1441797, -65530, 1, 1441797, -65529, 1, 1441797, -65527, 1, 655364, -65525, 1, 655364, 9, 1, 655363, 11, 1, 655363, -65530, 2, 655365, -65531, 2, 655365, -65531, 3, 655365, -65530, 0, 655365, -65530, 65535, 655365, -65531, 65535, 655365, -65531, 65534, 655365, -65531, 65533, 655365, -65531, 0, 655365, 13, 1, 655366, 65549, 65535, 655366, 65551, 65535, 655364, 131087, 65535, 3, -65526, 1, 1441792, 65552, 65535, 1441792, 65553, 65535, 1441792, 131089, 65535, 1441793, 10, 1, 1441793, 65555, 65535, 1441796, 65556, 65535, 1441796, 131092, 65535, 1441795, 131091, 65535, 655367, 196627, 65535, 655367, -131067, 3, 655362, -131067, 2, 655362, -131067, 1, 655362, -131067, 0, 655362, -131066, 0, 655362, -131066, 65535, 655362, -131067, 65535, 655362, -131067, 65534, 655362, -131067, 65533, 655362, -131066, 1, 655362, -131066, 2, 655362, -131065, 1, 655362, -65523, 1, 655362, 13, 65535, 655362, -131059, 1, 655371, -65523, 65535, 655371)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[connection signal="player_entered" from="Exit" to="." method="_on_exit_player_entered"]
+[connection signal="battery_collected" from="Player" to="." method="_on_player_battery_collected"]
+[connection signal="fell" from="Player" to="." method="_on_player_fell"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]

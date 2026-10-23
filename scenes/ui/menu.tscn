@@ -1,0 +1,119 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/menu.gd" id="1_menu"]
+[ext_resource type="Theme" path="res://scenes/ui/menu_theme.tres" id="2_theme"]
+
+[node name="Menu" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_menu")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="Dim" type="ColorRect" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Center" type="CenterContainer" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Root/Center"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Root/Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Root/Center/Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.22, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "ROBOT COLLECTOR"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Root/Center/Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.74, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "Собери все батарейки, пока не сел заряд"
+horizontal_alignment = 1
+
+[node name="Gap" type="Control" parent="Root/Center/Panel/VBox"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Root/Center/Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Играть"
+
+[node name="RestartButton" type="Button" parent="Root/Center/Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Начать забег заново"
+
+[node name="MenuButton" type="Button" parent="Root/Center/Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Главное меню"
+
+[node name="QuitButton" type="Button" parent="Root/Center/Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Выход"
+
+[node name="Separator" type="HSeparator" parent="Root/Center/Panel/VBox"]
+layout_mode = 2
+
+[node name="RecordCaption" type="Label" parent="Root/Center/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.74, 0.8, 1)
+theme_override_font_sizes/font_size = 20
+text = "Рекорд прохождения игры"
+horizontal_alignment = 1
+
+[node name="BestRunLabel" type="Label" parent="Root/Center/Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.22, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 38
+text = "—"
+horizontal_alignment = 1
+
+[node name="LevelsLabel" type="Label" parent="Root/Center/Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Уровень 1:  —"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="Root/Center/Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.74, 0.8, 1)
+theme_override_font_sizes/font_size = 16
+text = "Esc — продолжить"
+horizontal_alignment = 1

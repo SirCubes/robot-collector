@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bsl44krq1n22u"]
+
+[ext_resource type="Script" uid="uid://dt6dyq0qf4r82" path="res://scenes/moving_platform.gd" id="1_1tdcd"]
+[ext_resource type="PackedScene" uid="uid://dqwc4h55s6e1q" path="res://models/platform.glb" id="1_ms375"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3e0k0"]
+size = Vector3(3, 0.5, 3)
+
+[node name="MovingPlatform" type="AnimatableBody3D" unique_id=630856672]
+script = ExtResource("1_1tdcd")
+
+[node name="platform" parent="." unique_id=1076245077 instance=ExtResource("1_ms375")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=228554138]
+shape = SubResource("BoxShape3D_3e0k0")

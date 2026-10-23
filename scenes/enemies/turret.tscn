@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/enemies/turret.gd" id="1_turret"]
+[ext_resource type="PackedScene" uid="uid://b4takwiw53t58" path="res://models/turret.glb" id="2_turret"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_turret"]
+height = 1.1
+radius = 0.55
+
+[node name="Turret" type="StaticBody3D"]
+script = ExtResource("1_turret")
+
+[node name="turret" parent="." instance=ExtResource("2_turret")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("CylinderShape3D_turret")

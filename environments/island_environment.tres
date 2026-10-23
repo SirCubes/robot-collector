@@ -1,0 +1,16 @@
+[gd_resource type="Environment" format=3]
+
+[ext_resource type="Shader" path="res://shaders/sky_island.gdshader" id="1_sky"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_island"]
+shader = ExtResource("1_sky")
+
+[sub_resource type="Sky" id="Sky_island"]
+sky_material = SubResource("ShaderMaterial_island")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_island")
+ambient_light_source = 3
+ambient_light_energy = 1.0
+glow_enabled = true

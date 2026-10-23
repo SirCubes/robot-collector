@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/traps/crumble_platform.gd" id="1_crumble"]
+[ext_resource type="PackedScene" uid="uid://cjc6s07j3lx36" path="res://models/crumble_platform.glb" id="2_crumble"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_crumble"]
+size = Vector3(3, 0.5, 3)
+
+[node name="CrumblePlatform" type="AnimatableBody3D"]
+script = ExtResource("1_crumble")
+
+[node name="crumble_platform" parent="." instance=ExtResource("2_crumble")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_crumble")
